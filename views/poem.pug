@@ -1,0 +1,36 @@
+extends layout
+
+include mixins/_commentForm
+include mixins/_comment
+
+block content
+    .inner
+        .card--poem
+            h2
+                a(href=`/poems/${poem.slug}`) #{poem.name}
+            hr
+            p= poem.text
+            hr
+            if user
+                .controls__container
+                    form.poem__controls(method="POST" action=`/api/v1/poems/${poem._id}/heart`)
+                            - const heartStrings = user.hearts.map(obj => obj.toString())
+                            - const heartClass = heartStrings.includes(poem._id.toString()) ?   'heart__button--hearted' : ''
+                            button.heart__button(type="submit" name="heart" class=heartClass)
+                                != h.icon('thumbs-down')
+                            button.heart__button(type="submit" name="heart" class=heartClass)
+                                != h.icon('thumbs-up')
+                            button.heart__button(type="submit" name="heart" class=heartClass)
+                                != h.icon('heart')
+                            button.heart__button(type="submit" name="heart" class=heartClass)
+                                h6 Next: &rarr;
+
+    .inner
+        .card--poem
+            if poem.tags
+                span.poem--title This poem's genome
+                hr
+                each tag in poem.tags
+                    a(href=`/tags/${tag}`)
+                        span #{tag},&nbsp;
+

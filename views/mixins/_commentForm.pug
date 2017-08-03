@@ -1,0 +1,5 @@
+mixin commentForm(store)
+    form.reviewer(action=`/comments/${poem._id}` method="POST")
+        textarea(name="text" placeholder="Participate in the Dialogue")
+        .reviewer__meta
+        input.button(type="submit" value="Submit your Comment →")

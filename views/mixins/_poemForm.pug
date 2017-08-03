@@ -1,0 +1,22 @@
+mixin poemForm(poem = {})
+    form(action=`/add/${poem._id || ''}` method="POST" class="card")
+        label(for="name") Name
+        input(type="text" name="name" value=poem.name)
+        label(for="description") Description
+        textarea(name="description")= poem.description
+        label(for="form") Poem Form (haiku, epic, pastoral etc...)
+        input(type="form" name="form" value=poem.form)
+        - const choices = ["dedication", "abrupt", "abstract", "ars poetica", "belonging", "body/ health", "contentment", "crazy/ distinctive punctuation", "current events", "doubt/ frustration", "ekphrastic", "elegiac", "ending resolves", "erasure", "erotic/ sensuous", "existence/ death", "experimental", "fairy tale/ fable", "family/ caretaking", "fantastical", "fascination with etymology or language itself", "flashy", "food/ cooking", "formal over informal", "fragments/ fragmented", "hard enjambment", "heavy repetition", "high language", "historical", "humorous", "identity: racial/ ethnic/ cultural/ gender", "jagged/ jarring", "literary references", "long (35 lines+)", "loss/ loneliness", "love/ relationships", "lyrical", "metered/ measured", "moon/ sun", "moralizing", "multi-part poem", "multiple voices/ perspectives", "musical", "mythology/ folklore", "narrative", "nature or appreciation of the green world", "non-English language(s)", "obvious plot", "obvious rhyme (i.e. heavy, strict)", "passing of time/ seasons", "persecution/ lament", "persona poem", "planned", "reflection", "religious themes", "sci-fi", "science", "sea/ water", "smooth/ lush", "space/cosmology", "spontaneous", "subtle rhyme (i.e. light, internal, slant)", "surreal", "title supremely important", "urban/ city", "usage of &", "vitality", "war/ violence", "wonder/ praise"]
+        - const tags = poem.tags || []
+        #editor
+        ul.tags
+            each choice in choices
+                .tag.tag__choice
+                    input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+                    label(for=choice) #{choice}
+            input(type="submit" value="Save →" class="button")
+        script.
+            var quill = new Quill('#editor', {
+                placeholder: 'Compose your poem...',
+                theme: 'snow'
+            });
