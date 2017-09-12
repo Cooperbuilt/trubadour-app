@@ -39,3 +39,53 @@ label {
     border-bottom: 1px solid $grey;
   }
 }
+
+.tab {
+  position: relative;
+  margin-bottom: 1px;
+  width: 100%;
+  color: #fff;
+  overflow: hidden;
+  input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+  label {
+    position: relative;
+    display: block;
+    padding: 0 0 0 1em;
+    background: $black;
+    font-weight: bold;
+    line-height: 3;
+    cursor: pointer;
+  }
+  input:checked ~ .tab-content {
+    height: 75%;
+  }
+  .tab-content {
+    height: 0;
+    color: $black;
+    -webkit-transition: height .35s;
+    -o-transition: height .35s;
+    transition: height .35s;
+  }
+  .tab-content p {
+    margin: 1em;
+  }
+  label::after {
+    position: absolute;
+    right: 0;
+    color: $white;
+    top: 0;
+    display: block;
+    width: 3em;
+    height: 3em;
+    line-height: 3;
+    text-align: center;
+    -webkit-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+  }
+}
+

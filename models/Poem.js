@@ -33,14 +33,11 @@ const poemSchema = new mongoose.Schema({
 // Define indexes for Mongo
 poemSchema.index({
     name: 'text',
-    description: 'text'
+    description: 'text',
+    text: 'text'
 });
 
-// Define indexes for Mongo
-poemSchema.index({
-    name: 'text',
-    tags: 'text'
-});
+
 
 // Sets the url slug to the poem name when the name is changed
 poemSchema.pre('save', async function(next) {

@@ -119,7 +119,6 @@ exports.getPoemBySlug = async (req, res, next) => {
     }
 };
 
-
 // Searches poems by name || description || tags
 // Assigns score based on meta data
 // Returns in descending order via a json payload

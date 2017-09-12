@@ -5,18 +5,124 @@ mixin poemForm(poem = {})
         label(for="description") Description
         textarea(name="description")= poem.description
         label(for="form") Poem Form (haiku, epic, pastoral etc...)
-        input(type="form" name="form" value=poem.form)
-        - const choices = ["dedication", "abrupt", "abstract", "ars poetica", "belonging", "body/ health", "contentment", "crazy/ distinctive punctuation", "current events", "doubt/ frustration", "ekphrastic", "elegiac", "ending resolves", "erasure", "erotic/ sensuous", "existence/ death", "experimental", "fairy tale/ fable", "family/ caretaking", "fantastical", "fascination with etymology or language itself", "flashy", "food/ cooking", "formal over informal", "fragments/ fragmented", "hard enjambment", "heavy repetition", "high language", "historical", "humorous", "identity: racial/ ethnic/ cultural/ gender", "jagged/ jarring", "literary references", "long (35 lines+)", "loss/ loneliness", "love/ relationships", "lyrical", "metered/ measured", "moon/ sun", "moralizing", "multi-part poem", "multiple voices/ perspectives", "musical", "mythology/ folklore", "narrative", "nature or appreciation of the green world", "non-English language(s)", "obvious plot", "obvious rhyme (i.e. heavy, strict)", "passing of time/ seasons", "persecution/ lament", "persona poem", "planned", "reflection", "religious themes", "sci-fi", "science", "sea/ water", "smooth/ lush", "space/cosmology", "spontaneous", "subtle rhyme (i.e. light, internal, slant)", "surreal", "title supremely important", "urban/ city", "usage of &", "vitality", "war/ violence", "wonder/ praise"]
+        - const poemTypes = ["Ballade", "Blank verse", "Cinquain", "Concrete", "Couplet", "Elegy", "Epic", "Epigram", "Epitaph", "Free verse (vers libre)", "Found", "Ghazal", "Haiku", "Iambic pentameter", "Limerick", "List", "Lyric", "Narrative", "Ode", "Pastoral", "Petrarchan", "Quatrain", "Rondeau", "Sestina", "Shakespearean", "Shape", "Sonnet", "Tanka", "Terza Rima", "Villanelle", "Visual", "Other"]
+        select(type="select" name="form")= poem.type
+             each variable in poemTypes
+                option(value=variable) #{variable}
+        - const poems = ["Long (35 lines+)", "Short", "Contains epigraph", "After X", "Critical poet context", "Multi-part", "Erasure", "Found", "Letter", "List", "Shape / Conrete", "Collage", "Multi-media/ Visual", "Ars poetica", "Cowboy", "Ekphrastic", "Elegy / elegiac", "Persona", "Sci-Fi"]
+        - const technical = ["Past tense", "Present tense", "Future tense", "Mixed tense", "1st person POV", "2nd person POV", "3rd person POV", "Mixed POV", "Strict meter", "Loose meter", "Pervasively rhyming", "Loosely rhyming", "Slant rhyme", "Internal rhyme", "End rhyme"]
+        - const line = ["Longer lines", "Shorter lines", "One-word lines", "Consistent Line length", "Variable Line length", "Irregular indentation"]
+        - const theme = ["Love/ relationships", "Social cause/ conflict", "Personal struggle", " Existence", "Time/ seasons", "Space/ cosmology", "Moon/ sun", "Land/ nature", "Sea/ water", "Animal life", "Rural/ farm", "Urban/ city", "Domestic life", " Food/ cooking", "Body/ health", "War"]
+        - const content = ["Mythology/ Folktale", "Fairy tale/ Fable", "Science/ Math", "History", "Literary references/ Allusion", "Religion/ religious elements", "Morality/ philosophy", "Celebrities/ famous figures", " Current events", "Erotic / Sensual", "Non-erotic / non-sensual", "Aging", "Childbirth/ motherhood", "Family/ care-taking", "Dying / death", "Wounds/ impairment", "Surreal images", "Still/real life images"]
+        - const craft = ["Fragments / fragmented", "Hard enjambments", "Loose / vague plot", "Obvious / definite plot", "Narrative Elements", "Wide, rapid leaps", "Slow spin-out"]
+        - const construction = ["Title as first line", "Critical title", "Capital lines", "& symbol", "Word / phrase repetition", "Sentence repetition", "Sound repetition", "Image repetition"]
+        - const style = ["Hard / high language", "Generalizations", "Sweeping statements", "Subtlety > Flash", "Flash > Subtlety", "School / tradition reflected"]
+        - const texture = ["Smooth / lyrical / musical", "Jagged / hard / jarring", "Lush / rich", "Stripped / sparse", "Non-English languages"]
+        - const effect = ["Many via one", "One via one", "Long-range surprise", "Long-range certitude", "Emd resolves", "End ambiguous", "Open authoring", "Closed authoring"]
+        -const origination = ["Personal", "Fantasy / imagination", "Political / activist", "Etymology", "Promted response", "Appreciation", "Refelction" ,"Exploration", "Experiment", "Exercise", "Nature / green world", "Absract / expert ideas", "Wonder / praise", "Persecution / lament", "Honor / duty", "Doubt / frustration", "Vitality / harmony", "Belonging / contentment", "Loss / loneliness", "Violence / ruin"]
+
         - const tags = poem.tags || []
-        #editor
-        ul.tags
-            each choice in choices
-                .tag.tag__choice
-                    input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
-                    label(for=choice) #{choice}
-            input(type="submit" value="Save →" class="button")
-        script.
-            var quill = new Quill('#editor', {
-                placeholder: 'Compose your poem...',
-                theme: 'snow'
-            });
+        label(for="text") Poem Text
+        textarea(name="text" rows=10)= poem.description
+        .tab
+            input#tab-one(type='checkbox', name='tabs')
+            label(for='tab-one') Base Poem Tags
+            .tab-content
+                ul.tags
+                    each choice in poems
+                        .tag.tag__choice
+                            input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+                            label(for=choice) #{choice}
+        .tab
+            input#tab-two(type='checkbox', name='tabs')
+            label(for='tab-two') Technical Tags
+            .tab-content
+                ul.tags
+                    each choice in technical
+                        .tag.tag__choice
+                            input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+                            label(for=choice) #{choice}
+        .tab
+            input#tab-three(type='checkbox', name='tabs')
+            label(for='tab-three') Line Tags
+            .tab-content
+                ul.tags
+                    each choice in line
+                        .tag.tag__choice
+                            input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+                            label(for=choice) #{choice}
+        .tab
+            input#tab-four(type='checkbox', name='tabs')
+            label(for='tab-four') Theme Tags
+            .tab-content
+                ul.tags
+                    each choice in theme
+                        .tag.tag__choice
+                            input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+                            label(for=choice) #{choice}
+        .tab
+            input#tab-five(type='checkbox', name='tabs')
+            label(for='tab-five') Content Tags
+            .tab-content
+                ul.tags
+                    each choice in content
+                        .tag.tag__choice
+                            input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+                            label(for=choice) #{choice}
+        .tab
+            input#tab-six(type='checkbox', name='tabs')
+            label(for='tab-six') Craft Tags
+            .tab-content
+                ul.tags
+                    each choice in craft
+                        .tag.tag__choice
+                            input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+                            label(for=choice) #{choice}
+        .tab
+            input#tab-seven(type='checkbox', name='tabs')
+            label(for='tab-seven') Construction Tags
+            .tab-content
+                ul.tags
+                    each choice in construction
+                        .tag.tag__choice
+                            input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+                            label(for=choice) #{choice}
+        .tab
+            input#tab-eight(type='checkbox', name='tabs')
+            label(for='tab-eight') Style Tags
+            .tab-content
+                ul.tags
+                    each choice in style
+                        .tag.tag__choice
+                            input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+                            label(for=choice) #{choice}
+        .tab
+            input#tab-nine(type='checkbox', name='tabs')
+            label(for='tab-nine') Texture Tags
+            .tab-content
+                ul.tags
+                    each choice in texture
+                        .tag.tag__choice
+                            input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+                            label(for=choice) #{choice}
+        .tab
+            input#tab-ten(type='checkbox', name='tabs')
+            label(for='tab-ten') Effect Tags
+            .tab-content
+                ul.tags
+                    each choice in effect
+                        .tag.tag__choice
+                            input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+                            label(for=choice) #{choice}
+        .tab
+            input#tab-eleven(type='checkbox', name='tabs')
+            label(for='tab-eleven') Origination Tags
+            .tab-content
+                ul.tags
+                    each choice in origination
+                        .tag.tag__choice
+                            input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+                            label(for=choice) #{choice}
+
+
+        input(type="submit" value="Save →" class="button")

@@ -25,6 +25,6 @@ exports.menu = [
   // { slug: '/browse', title: 'Browse', icon: 'open-book', },
   { slug: '/tags', title: 'Explore', icon: 'open-book', },
   // { slug: '/top', title: 'Top', icon: 'top', },
-  { slug: '/add', title: 'Add', icon: 'add', },
+  { slug: '/add', title: 'Add Poem', icon: 'add', },
   // { slug: '/map', title: 'Map', icon: 'map', },
 ];

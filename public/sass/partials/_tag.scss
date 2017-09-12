@@ -25,13 +25,14 @@
         padding: 1rem 1rem 1rem 4rem;
       }
       &:checked + label {
-        background: $yellow;
+        background: $black;
+        color: $white;
       }
     }
   }
   &__link {
-    background:$yellow;
-    color:$black;
+    background:$black;
+    color:$white;
     display: flex;
     padding-left: 10px;
     clip-path: polygon(10px 0%, 100% 1%, 100% 100%, 10px 100%, 0% 50%);

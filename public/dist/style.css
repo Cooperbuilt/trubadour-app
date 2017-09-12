@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=EB+Garamond|Roboto:500);@charset "UTF-8";
 html {
   font-size: 10px; }
 
@@ -429,31 +429,26 @@ template {
 [hidden] {
   display: none; }
 
-@font-face {
-  font-family: 'panama';
-  src: url("/fonts/panama-bold-webfont.woff2") format("woff2"), url("/fonts/panama-bold-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal; }
-
 html {
-  font-size: 10px; }
+  font-size: 10px;
+  font-family: 'EB Garamond', serif; }
 
 body {
   font-size: 1.5rem;
-  color: #303030; }
+  color: #404d5b; }
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 5rem;
-  font-family: 'Panama';
+  font-family: 'Roboto', sans-serif;
   font-weight: 600;
   letter-spacing: -1px; }
 
 a {
   text-decoration: none;
-  color: #303030; }
+  color: #404d5b; }
 
 p a {
-  border-bottom: 2px solid #FFC40E; }
+  border-bottom: 2px solid #e6e6e6; }
 
 p {
   line-height: 2;
@@ -462,30 +457,19 @@ p {
 .title {
   word-wrap: break-word;
   position: relative;
+  color: #404d5b;
   z-index: 2;
+  padding-top: 10px;
   margin: 0;
   font-size: 40px;
   z-index: 2;
   line-height: 1.1;
-  -ms-transform: skew(0, -3deg);
-      transform: skew(0, -3deg);
   line-height: 1.1; }
   .title--long {
     font-size: 30px; }
-  .title:before {
-    content: '';
-    width: 50px;
-    left: 0;
-    top: 0;
-    height: 100%;
-    display: block;
-    position: absolute;
-    z-index: -1;
-    -ms-transform: skew(-5deg);
-        transform: skew(-5deg); }
   .title a {
     border-bottom: 0;
-    background-image: linear-gradient(to right, rgba(255, 196, 14, 0.8) 100%, rgba(255, 196, 14, 0.8) 50%); }
+    color: #404d5b; }
 
 .title--single {
   max-width: 600px;
@@ -526,6 +510,44 @@ label {
     padding-bottom: 2rem;
     margin-bottom: 2rem;
     border-bottom: 1px solid #e6e6e6; }
+
+.tab {
+  position: relative;
+  margin-bottom: 1px;
+  width: 100%;
+  color: #fff;
+  overflow: hidden; }
+  .tab input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1; }
+  .tab label {
+    position: relative;
+    display: block;
+    padding: 0 0 0 1em;
+    background: #404d5b;
+    font-weight: bold;
+    line-height: 3;
+    cursor: pointer; }
+  .tab input:checked ~ .tab-content {
+    height: 75%; }
+  .tab .tab-content {
+    height: 0;
+    color: #404d5b;
+    transition: height .35s; }
+  .tab .tab-content p {
+    margin: 1em; }
+  .tab label::after {
+    position: absolute;
+    right: 0;
+    color: #f9f7f6;
+    top: 0;
+    display: block;
+    width: 3em;
+    height: 3em;
+    line-height: 3;
+    text-align: center;
+    transition: all .35s; }
 
 .search {
   position: relative;
@@ -609,12 +631,13 @@ label {
 .nav {
   display: -ms-flexbox;
   display: flex;
+  font-family: 'Roboto', sans-serif;
   list-style: none;
   margin: 0;
   padding: 0;
   -ms-flex-pack: justify;
       justify-content: space-between;
-  background: #303030; }
+  background: #404d5b; }
   .nav__section {
     display: -ms-flexbox;
     display: flex; }
@@ -625,8 +648,8 @@ label {
     display: -ms-flexbox;
     display: flex; }
   .nav__link {
-    background: #303030;
-    color: white;
+    background: #404d5b;
+    color: #f9f7f6;
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     text-transform: uppercase;
     padding: 1.2rem 2rem 1rem 2rem;
@@ -716,7 +739,7 @@ label {
   .table tr:nth-child(odd):not(:first-child) {
     background: #f7f7f7; }
   .table thead tr {
-    background: #303030;
+    background: #404d5b;
     color: white; }
 
 .poems {
@@ -735,7 +758,7 @@ label {
   .poem--wide {
     width: 100%; }
   .poem__details {
-    padding: 2rem; }
+    padding: 1rem; }
     .poem__details p {
       line-height: 1.2;
       margin-bottom: 0; }
@@ -748,16 +771,20 @@ label {
     .poem {
       width: 100%; } }
 
+.poem--text {
+  white-space: pre-wrap; }
+
 .poem__actions {
   position: relative;
   z-index: 2;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.2);
-  margin-bottom: 50px;
   padding-top: 10px;
   padding-bottom: 20px;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   color: white;
   -ms-flex-align: center;
       align-items: center;
@@ -765,18 +792,20 @@ label {
       justify-content: space-around; }
 
 .poem__action {
-  font-size: 10px; }
+  font-size: 20px; }
   .poem__action svg {
     width: 25px;
-    fill: white; }
+    fill: #404d5b; }
   .poem__action--edit a {
     border-bottom: 0; }
 
 .controls__container {
-  height: 10rem;
+  height: 2rem;
   width: 100%;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   -ms-flex-align: center;
@@ -794,28 +823,17 @@ label {
 .poem__hero {
   position: relative;
   padding: 0 10px 0 10px;
-  text-align: right; }
+  text-align: left; }
   .poem__hero:before {
     display: block;
     content: '';
     position: absolute;
-    height: 100%;
+    height: 10%;
     width: 100%;
     top: 0;
     right: 0;
-    background: linear-gradient(45deg, #05b3d6 20%, rgba(5, 179, 214, 0) 70%), linear-gradient(135deg, #0958ec 100%, rgba(9, 88, 236, 0) 80%);
     opacity: 0.6;
     z-index: 1;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
-  .poem__hero img {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    right: 0;
-    position: absolute;
-    left: 0;
-    object-fit: cover;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
 
@@ -849,10 +867,11 @@ label {
         background: #e6e6e6;
         padding: 1rem 1rem 1rem 4rem; }
       .tag__choice input:checked + label {
-        background: #FFC40E; }
+        background: #404d5b;
+        color: #f9f7f6; }
   .tag__link {
-    background: #FFC40E;
-    color: #303030;
+    background: #404d5b;
+    color: #f9f7f6;
     display: -ms-flexbox;
     display: flex;
     padding-left: 10px;
@@ -891,8 +910,6 @@ label {
     width: 100%;
     top: 0;
     right: 0;
-    background: linear-gradient(45deg, rgba(5, 179, 214, 0.8) 0%, rgba(5, 179, 214, 0) 100%), linear-gradient(135deg, #0958ec 10%, rgba(9, 88, 236, 0) 100%);
-    opacity: 0.6;
     z-index: 1; }
 
 .single__details {
@@ -1083,7 +1100,7 @@ label {
 .button {
   border: 0;
   background: #FFC40E;
-  color: #303030;
+  color: #404d5b;
   font-family: 'Panama';
   font-weight: 600; }
 

@@ -1,7 +1,6 @@
 mixin poemCard(poem = {})
     .poem
-        .poem__hero
-            .poem__actions
+        .poem__actions
                 if user
                     .poem__action.poem__action--heart
                         form.heart(method="POST" action=`/api/v1/poems/${poem._id}/heart`)
@@ -13,14 +12,9 @@ mixin poemCard(poem = {})
                     .poem__action.poem__action--edit
                         a(href=`/poems/${poem._id}/edit`)
                             != h.icon('pencil')
-                if poem.comments
-                    .poem__action.poem__action--count
-                        a(href=`/poems/${poem.slug}`)
-                            != h.icon('review')
-                        span= poem.comments.length
-
-            img(src=`/uploads/text.jpg`)
+        .poem__hero
             h2.title.poem--title
-                a(href=`/poems/${poem.slug}`) #{poem.name}
+                    a(href=`/poems/${poem.slug}`) #{poem.name}
+
         .poem__details
             p= poem.description.split(' ').slice(0, 25).join(' ')
