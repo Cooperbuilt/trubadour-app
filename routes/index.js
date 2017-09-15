@@ -12,7 +12,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 router.get('/', catchErrors(storeController.getPoems));
 router.get('/poems', catchErrors(storeController.getPoems));
 router.get('/poems/page/:page', catchErrors(storeController.getPoems));
-router.get('/add', storeController.addPoem);
+router.get('/add', authController.isLoggedIn, storeController.addPoem);
 // catchErrors is a higher order function to handle the asynchronous call to mongo
 router.post('/add', catchErrors(storeController.createPoem));
 router.post('/add/:id', catchErrors(storeController.updatePoem));

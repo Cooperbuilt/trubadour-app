@@ -52,6 +52,10 @@ exports.resize = async (req, res, next) => {
 
 
 exports.createPoem = async (req, res) => {
+    if (!req.user._id) {
+        throw Error('You must be logged in to add a poem');
+        req.redirect(`/login`);
+    }
     req.body.author = req.user._id;
     const poem = await (new Poem(req.body)).save();
     await poem.save();
