@@ -8,6 +8,7 @@ block content
         .card--poem
             h2
                 a(href=`/poems/${poem.slug}`) #{poem.name}
+            h3 by #{poem.author.name}
             hr
             p.poem--text= poem.text
     .inner
@@ -28,9 +29,10 @@ block content
     .inner
         .card--poem
             if poem.tags
-                span.poem--title This poem's genome
+                span.poem--title This poem's genome (click on any tag to explore more)
                 hr
                 each tag in poem.tags
                     a(href=`/tags/${tag}`)
                         span #{tag},&nbsp;
+        br
 
