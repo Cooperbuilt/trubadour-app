@@ -97,4 +97,13 @@
   }
 }
 
+.poem__genes {
+  margin: 2px;
+  padding: 2px 5px;
+  transition: .5s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
 
+.poem__genes:hover {
+  background: $black;
+  color: $white;
+}

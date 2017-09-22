@@ -59,7 +59,7 @@ exports.createPoem = async (req, res) => {
     req.body.author = req.user._id;
     const poem = await (new Poem(req.body)).save();
     await poem.save();
-    req.flash('success', `Successfully Added "${poem.name}." Care to leave a comment?`);
+    req.flash('success', `You did it! Thank you for joining our first attempt to collect poems and data about them. Please let us know what you think! We want to know how we can simplify and streamline the process. We’re excited for what the future can hold. Thanks again!`);
     res.redirect(`/poems/${poem.slug}`);
 };
 

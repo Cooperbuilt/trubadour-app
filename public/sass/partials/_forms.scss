@@ -1,12 +1,20 @@
 input, textarea {
   width:100%;
   padding:10px;
-  border: 1px solid $grey;
+  border: 1px solid $black;
   &.input {
     &--error {
       border-color: red;
     }
   }
+}
+
+select {
+  background: transparent;
+  font-size: 14px;
+  height: 29px;
+  padding: 5px; /* If you add too much padding here, the options won't show in IE */
+  width: 100%;
 }
 
 .ql-toolbar.ql-snow {
@@ -19,8 +27,9 @@ input, textarea {
 }
 
 label {
-  padding: 10px 0;
+  padding: 20px 0;
   display: block;
+  font-size: 1.2em;
 }
 
 .form {
@@ -34,8 +43,8 @@ label {
   h2 {
     margin: 0;
     font-size: 2rem;
-    padding-bottom: 2rem;
-    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
     border-bottom: 1px solid $grey;
   }
 }
