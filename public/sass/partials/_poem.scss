@@ -17,6 +17,7 @@
     p {
       line-height: 1.2;
       margin-bottom: 0;
+      font-size: 1.3em;
     }
   }
   &--title {
@@ -78,25 +79,6 @@
   align-items: center;
 }
 
-
-.poem__hero {
-  position: relative;
-  padding: 0 10px 0 10px;
-  text-align: left;
-  &:before {
-    display: block;
-    content: '';
-    position: absolute;
-    height: 10%;
-    width: 100%;
-    top: 0;
-    right: 0;
-    opacity: 0.6;
-    z-index: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-  }
-}
-
 .poem__genes {
   margin: 2px;
   padding: 2px 5px;
@@ -106,4 +88,65 @@
 .poem__genes:hover {
   background: $black;
   color: $white;
+}
+
+
+.poem {
+  background:white;
+  margin: 10px 0;
+  width:30%;
+  box-shadow: $shad;
+  &--wide {
+    width: 100%;
+  }
+  &__details {
+    padding: 2rem;
+    p {
+      line-height: 1.2;
+      margin-bottom: 0;
+    }
+  }
+  &--title {
+    font-size: 30px;
+  }
+  @media all and (max-width: 850px) {
+    width: 48%;
+  }
+  @media all and (max-width: 550px) {
+    width: 100%;
+  }
+}
+
+.poem__action {
+  font-size: 10px;
+  svg {
+    width: 25px;
+    fill: white
+  }
+  &--edit {
+    a {
+      border-bottom: 0;
+    }
+  }
+}
+
+
+.poem__hero {
+  position: relative;
+  padding: 0 10px 0 10px;
+  text-align: right;
+  &:before {
+    display: block;
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    background:
+    linear-gradient(135deg, hsla(219, 93%, 48%, 1) 100%, hsla(219, 93%, 48%, 0) 100%),
+    linear-gradient(45deg, hsla(190, 95%, 43%, 1) 80%, hsla(190, 95%, 43%, 0) 100%);
+    opacity: 0.6;
+    z-index: 1;
+  }
 }
