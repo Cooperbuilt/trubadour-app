@@ -15,17 +15,18 @@ block content
         .card--poem
             if user
                 .controls__container
+                    form.poem__controls(method="POST" action=`/api/v1/poems/${poem._id}/like`)
+                            button.heart__button(type="submit" name="like")
+                               p Like
+                    form.poem__controls(method="POST" action=`/api/v1/poems/${poem._id}/dislike`)
+                            button.heart__button(type="submit" name="dislike")
+                                p Dislike
                     form.poem__controls(method="POST" action=`/api/v1/poems/${poem._id}/heart`)
                             - const heartStrings = user.hearts.map(obj => obj.toString())
                             - const heartClass = heartStrings.includes(poem._id.toString()) ?   'heart__button--hearted' : ''
                             button.heart__button(type="submit" name="heart" class=heartClass)
-                               p Like
-                            button.heart__button(type="submit" name="heart" class=heartClass)
-                                p Dislike
-                            button.heart__button(type="submit" name="heart" class=heartClass)
                                 p Favorite
-                            button.heart__button(type="submit" name="heart" class=heartClass)
-                                p Next: &rarr;
+                    a(href=`/feed`) Next: &rarr;
     .inner
         .card--poem
             if poem.tags

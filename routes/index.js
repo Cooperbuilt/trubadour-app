@@ -23,6 +23,9 @@ router.get('/poems/:slug', catchErrors(storeController.getPoemBySlug));
 router.get('/tags', catchErrors(storeController.getPoemsByTags));
 router.get('/tags/:tag', catchErrors(storeController.getPoemsByTags));
 
+// Feed Section
+router.get('/feed', catchErrors(storeController.getRandomPoem));
+
 router.get('/login', userController.loginForm);
 router.post('/login', authController.login);
 router.get('/register', userController.registerForm);
@@ -66,5 +69,6 @@ router.post('/comments/:id',
 
 router.get('/api/v1/search', catchErrors(storeController.searchPoems));
 router.post('/api/v1/poems/:id/heart', catchErrors(storeController.heartPoem));
-
+router.post('/api/v1/poems/:id/like', catchErrors(storeController.likePoem));
+router.post('/api/v1/poems/:id/dislike', catchErrors(storeController.dislikePoem));
 module.exports = router;

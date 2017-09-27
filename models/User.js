@@ -26,6 +26,12 @@ const userSchema = new Schema({
     resetPasswordExpires: Date,
     hearts: [
         { type: mongoose.Schema.ObjectId, ref: 'Poem' }
+    ],
+    likes: [
+        { type: mongoose.Schema.ObjectId, ref: 'Poem' }
+    ],
+    dislikes: [
+        { type: mongoose.Schema.ObjectId, ref: 'Poem' }
     ]
 });
 

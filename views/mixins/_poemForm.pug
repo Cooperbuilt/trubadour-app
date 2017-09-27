@@ -1,5 +1,5 @@
 mixin poemForm(poem = {})
-    form(action=` |add |${poem._id || ''}` method="POST" class="card")
+    form(action=`/add/${poem._id || ''}` method="POST" class="card")
         label(for="name") <strong>Title of the poem you wish to add</strong>
         input(type="text" name="name" value=poem.name)
         label(for="description") <strong>Description:</strong> Use this space to provide a description of your poem. Include information like the poem’s publication/ award history and venue, if it’s part of a larger project, why, where, or how you wrote this poem, what informs or inspires it, or anything else you’d like to share with your invested readers.
@@ -24,7 +24,7 @@ mixin poemForm(poem = {})
         - const tags = poem.tags || []
         label(for="text") <strong>Submission:</strong> Okay, we’re cooking now! Use the text box below to copy-paste your previously-published poem, if and only if you have the rights to it. Formatting will be preserved as closely as possible.</br></br>**Note: Plagiarism or adding poems that you don’t have the rights to share constitute grounds for poem removal and/or account suspension. If you’re unsure, your publication contract terms should specify the conditions under which you’re free to share your work with us.
         textarea(name="text" rows=20)= poem.description
-        label(for="tabs") <strong>Optional: Tag your poem.</strong><br/>As the poet, you're the one most familiar with your work. We value your opinion on how your poem embodies various dimensions of poetic/ artistic craft, represented by “tags” in the 12 categories below. <strong>Click each category and select only the tags that you think apply or are present in your poem (don't worry, selections remain after you close a section).</strong><br/><br/>These dimensions are in flux, and your responses help us to adapt and refine our categorization, so that your poem gets seen by the right readers. (Don’t worry if you don’t know what some of the tags mean just yet; we’re working on getting a glossary of terms out soon to further help in this process.) We appreciate your honest efforts here, to ensure the best chances of your poem finding its best readers. Thank you!
+        label(for="tabs") <strong>Optional: Tag your poem.</strong><br/>As the poet, you're the one most familiar with your work. We value your opinion on how your poem embodies various dimensions of poetic/ artistic craft, represented by “tags” in the 12 categories below. <strong>Click each category and select only the tags that you think apply or are present in your poem (don't worry, selections remain after you close a section.</strong><br/><br/>These dimensions are in flux, and your responses help us to adapt and refine our categorization, so that your poem gets seen by the right readers. (Don’t worry if you don’t know what some of the tags mean just yet; we’re working on getting a glossary of terms out soon to further help in this process.) We appreciate your honest efforts here, to ensure the best chances of your poem finding its best readers. Thank you!
 
         .tab
             input#tab-one(type='checkbox', name='tabs')

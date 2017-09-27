@@ -155,6 +155,26 @@ exports.heartPoem = async (req, res) => {
     );
 };
 
+exports.likePoem = async (req, res) => {
+    const likes = req.user.likes.map(obj => obj.toString());
+    const operator = likes.includes(req.params.id) ? '$pull' : '$addToSet';
+    const user = await User
+        .findByIdAndUpdate(req.user._id,
+        { [operator]: { likes: req.params.id }},
+        { new: true }
+    );
+};
+
+exports.dislikePoem = async (req, res) => {
+    const dislikes = req.user.dislikes.map(obj => obj.toString());
+    const operator = dislikes.includes(req.params.id) ? '$pull' : '$addToSet';
+    const user = await User
+        .findByIdAndUpdate(req.user._id,
+        { [operator]: { dislikes: req.params.id }},
+        { new: true }
+    );
+};
+
 exports.getPoemsByTags = async (req, res) => {
     const tag = req.params.tag;
     const tagQuery = tag || { $exists: true };
@@ -173,3 +193,8 @@ exports.getFavorites = async (req, res) => {
     });
     res.render('poems', {title: 'My Favorite Poems', poems })
 };
+
+exports.getRandomPoem = async (req, res) => {
+    const poem = await Poem.find().limit(-1).skip(Math.random() * Poem.count());
+    res.render('poem', { poem, title: poem.name });
+}
