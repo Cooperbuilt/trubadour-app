@@ -23,8 +23,8 @@ exports.siteName = `Trubadour`;
 exports.menu = [
   { slug: '/poems', title: 'All Poems', icon: 'poem', },
   // { slug: '/browse', title: 'Browse', icon: 'open-book', },
-  { slug: '/tags', title: 'Explore', icon: 'open-book', },
+  { slug: '/tags', title: 'Explore Genes', icon: 'dna-strand', },
   // { slug: '/top', title: 'Top', icon: 'top', },
-  { slug: '/add', title: 'Add Poem', icon: 'add', },
+  { slug: '/add', title: 'Add a Poem', icon: 'add', },
   // { slug: '/map', title: 'Map', icon: 'map', },
 ];
