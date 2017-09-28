@@ -73,6 +73,7 @@ exports.getPoems = async (req, res) => {
         .skip(skip)
         .limit(limit)
         .sort({ created: 'desc' })
+        .populate('author comments');
 
     const countPromise = Poem.count();
 

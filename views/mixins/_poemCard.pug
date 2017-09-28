@@ -13,11 +13,8 @@ mixin poemCard(poem = {})
           .poem__action.poem__action--edit
             a(href=`/poems/${poem._id}/edit`)
               != h.icon('pencil')
-        if poem.reviews
-          .poem__action.poem__action--count
-            != h.icon('review')
-            span= poem.reviews.length
       h2.title
         a(href=`/poems/${poem.slug}`) #{poem.name}
+        p.poem--author By #{poem.author.name}
     .poem__details
       p= poem.description.split(' ').slice(0, 25).join(' ')
