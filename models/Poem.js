@@ -63,6 +63,12 @@ poemSchema.statics.getTagsList = function() {
   ]);
 };
 
+poemSchema.statics.getRandomPoem = function() {
+    return this.aggregate([
+        { $sample: { size: 1 } }
+    ]);
+};
+
 
 // Find comments where the poems _id === comments on the poem property
 poemSchema.virtual('comments', {

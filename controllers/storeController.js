@@ -194,7 +194,13 @@ exports.getFavorites = async (req, res) => {
     res.render('poems', {title: 'My Favorite Poems', poems })
 };
 
-exports.getRandomPoem = async (req, res) => {
-    const poem = await Poem.find().limit(-1).skip(Math.random() * Poem.count());
-    res.render('poem', { poem, title: poem.name });
+exports.getRandomPoem = async (req, res, next) => {
+    const random = await Poem.getRandomPoem();
+    const poem = await Poem.findOne({ slug: random[0].slug }).populate('author comments');
+    // Check if there is no store at that slug
+    if(!poem) {
+        return next();
+    } else {
+        res.render('poem', { poem, title: poem.name });
+    }
 }
