@@ -5,6 +5,8 @@ include mixins/_pagination
 block content
     .inner
         h2= title
+        hr
+        br
         .poems
             each poem in poems
                 +poemCard(poem)

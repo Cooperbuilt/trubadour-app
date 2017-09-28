@@ -10,6 +10,7 @@ block content
                 a(href=`/poems/${poem.slug}`) #{poem.name}
             h3 &nbsp;&nbsp;by #{poem.author.name}
             hr
+            br
             p.poem--text= poem.text
     .inner
         .card--poem
