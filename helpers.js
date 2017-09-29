@@ -21,10 +21,10 @@ exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
 exports.siteName = `Trubadour`;
 
 exports.menu = [
-  { slug: '/poems', title: 'All Poems', icon: 'poem', },
-  // { slug: '/browse', title: 'Browse', icon: 'open-book', },
-  { slug: '/tags', title: 'Explore Genes', icon: 'dna-strand', },
+  { slug: '/feed', title: 'Read', icon: 'open-book', },
+  { slug: '/poems', title: 'All', icon: 'poem', },
+  { slug: '/tags', title: 'Genes', icon: 'dna-strand', },
   // { slug: '/top', title: 'Top', icon: 'top', },
-  { slug: '/add', title: 'Add a Poem', icon: 'add', },
+  { slug: '/add', title: 'Add', icon: 'add', },
   // { slug: '/map', title: 'Map', icon: 'map', },
 ];

@@ -181,7 +181,7 @@ exports.getPoemsByTags = async (req, res) => {
     const tagQuery = tag || { $exists: true };
 
     const tagsPromise = Poem.getTagsList();
-    const storesPromise = Poem.find({ tags: tagQuery });
+    const storesPromise = Poem.find({ tags: tagQuery }).populate('author comments');
     const [tags, poems] = await Promise.all([tagsPromise, storesPromise]);
 
     res.render('tag', { tags, title: 'Explore by Qualities', tag, poems });
